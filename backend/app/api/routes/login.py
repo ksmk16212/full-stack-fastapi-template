@@ -18,7 +18,7 @@ from app.utils import (
     verify_password_reset_token,
 )
 
-router = APIRouter(tags=["login"])
+router = APIRouter(tags=["login1"])
 
 
 @router.post("/login/access-token")

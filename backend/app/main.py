@@ -16,8 +16,16 @@ if settings.SENTRY_DSN and settings.ENVIRONMENT != "local":
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
+#     Sets the API name shown in Swagger UI (/docs)
+
+# Example: “Music Recommendation API”
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
     generate_unique_id_function=custom_generate_unique_id,
+#     Without unique IDs:
+
+# Swagger can break
+
+# Frontend clients may generate duplicate functions
 )
 
 # Set all CORS enabled origins

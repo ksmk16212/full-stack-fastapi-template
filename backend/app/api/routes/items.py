@@ -106,4 +106,6 @@ def delete_item(
         raise HTTPException(status_code=400, detail="Not enough permissions")
     session.delete(item)
     session.commit()
-    return Message(message="Item deleted successfully")
+    return Message(message="Item deleted successfully!")
+
+
