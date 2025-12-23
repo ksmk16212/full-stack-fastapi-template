@@ -4,11 +4,11 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query"
-import { createRouter, RouterProvider } from "@tanstack/react-router"
+import { createRouter, RouterProvider } from "@tanstack/react-router"//Uses TanStack Router instead of React Router.
 import { StrictMode } from "react"
 import ReactDOM from "react-dom/client"
 import { ApiError, OpenAPI } from "./client"
-import { ThemeProvider } from "./components/theme-provider"
+import { ThemeProvider } from "./components/theme-provider"//Theme (dark/light),Toast notifications,Global CSS
 import { Toaster } from "./components/ui/sonner"
 import "./index.css"
 import { routeTree } from "./routeTree.gen"
@@ -33,6 +33,12 @@ const queryClient = new QueryClient({
   }),
 })
 
+// All GET requests → QueryCache
+
+// All POST/PUT/DELETE → MutationCache
+
+// Any auth error → auto logout
+
 const router = createRouter({ routeTree })
 declare module "@tanstack/react-router" {
   interface Register {
@@ -40,8 +46,9 @@ declare module "@tanstack/react-router" {
   }
 }
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(//Mounts the app into index.html.
   <StrictMode>
+    {/* //Dev-only checks (double render warnings). */}
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />

@@ -1,6 +1,6 @@
 import { FaGithub, FaLinkedinIn } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
-
+import { Link as RouterLink, useRouterState } from "@tanstack/react-router"
 const socialLinks = [
   { icon: FaGithub, href: "https://github.com/fastapi/fastapi", label: "GitHub" },
   { icon: FaXTwitter, href: "https://x.com/fastapi", label: "X" },
@@ -16,6 +16,13 @@ export function Footer() {
         <p className="text-muted-foreground text-sm">
           Full Stack FastAPI Template - {currentYear}
         </p>
+        <RouterLink
+            to="/bitcoin"
+            className="ml-auto text-sm underline-offset-4 hover:underline"
+        >
+         Current Bitcoin
+        </RouterLink>
+
         <div className="flex items-center gap-4">
           {socialLinks.map(({ icon: Icon, href, label }) => (
             <a

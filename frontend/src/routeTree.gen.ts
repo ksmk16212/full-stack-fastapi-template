@@ -14,10 +14,21 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RecoverPasswordRouteImport } from './routes/recover-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LayoutRouteImport } from './routes/_layout'
+import { Route as Another_rootRouteImport } from './routes/_another_root'
 import { Route as LayoutIndexRouteImport } from './routes/_layout/index'
+import { Route as LayoutToolsRouteImport } from './routes/_layout/tools'
 import { Route as LayoutSettingsRouteImport } from './routes/_layout/settings'
 import { Route as LayoutItemsRouteImport } from './routes/_layout/items'
+import { Route as LayoutItemNameRouteImport } from './routes/_layout/itemName'
+import { Route as LayoutGithubRouteImport } from './routes/_layout/github'
+import { Route as LayoutDiagramRouteImport } from './routes/_layout/diagram'
+import { Route as LayoutCompanyRouteImport } from './routes/_layout/company'
+import { Route as LayoutBitcoinRouteImport } from './routes/_layout/bitcoin'
 import { Route as LayoutAdminRouteImport } from './routes/_layout/admin'
+import { Route as Another_rootStopRouteImport } from './routes/_another_root/stop'
+import { Route as Another_rootPlayRouteImport } from './routes/_another_root/play'
+import { Route as LayoutBitcoinStakingRouteImport } from './routes/_layout/Bitcoin/staking'
+import { Route as LayoutBitcoinBitcoinIdRouteImport } from './routes/_layout/Bitcoin/$bitcoinId'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -43,9 +54,18 @@ const LayoutRoute = LayoutRouteImport.update({
   id: '/_layout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Another_rootRoute = Another_rootRouteImport.update({
+  id: '/_another_root',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LayoutIndexRoute = LayoutIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutToolsRoute = LayoutToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
   getParentRoute: () => LayoutRoute,
 } as any)
 const LayoutSettingsRoute = LayoutSettingsRouteImport.update({
@@ -58,9 +78,54 @@ const LayoutItemsRoute = LayoutItemsRouteImport.update({
   path: '/items',
   getParentRoute: () => LayoutRoute,
 } as any)
+const LayoutItemNameRoute = LayoutItemNameRouteImport.update({
+  id: '/itemName',
+  path: '/itemName',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutGithubRoute = LayoutGithubRouteImport.update({
+  id: '/github',
+  path: '/github',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutDiagramRoute = LayoutDiagramRouteImport.update({
+  id: '/diagram',
+  path: '/diagram',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutCompanyRoute = LayoutCompanyRouteImport.update({
+  id: '/company',
+  path: '/company',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutBitcoinRoute = LayoutBitcoinRouteImport.update({
+  id: '/bitcoin',
+  path: '/bitcoin',
+  getParentRoute: () => LayoutRoute,
+} as any)
 const LayoutAdminRoute = LayoutAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const Another_rootStopRoute = Another_rootStopRouteImport.update({
+  id: '/stop',
+  path: '/stop',
+  getParentRoute: () => Another_rootRoute,
+} as any)
+const Another_rootPlayRoute = Another_rootPlayRouteImport.update({
+  id: '/play',
+  path: '/play',
+  getParentRoute: () => Another_rootRoute,
+} as any)
+const LayoutBitcoinStakingRoute = LayoutBitcoinStakingRouteImport.update({
+  id: '/Bitcoin/staking',
+  path: '/Bitcoin/staking',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutBitcoinBitcoinIdRoute = LayoutBitcoinBitcoinIdRouteImport.update({
+  id: '/Bitcoin/$bitcoinId',
+  path: '/Bitcoin/$bitcoinId',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -69,32 +134,63 @@ export interface FileRoutesByFullPath {
   '/recover-password': typeof RecoverPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/play': typeof Another_rootPlayRoute
+  '/stop': typeof Another_rootStopRoute
   '/admin': typeof LayoutAdminRoute
+  '/bitcoin': typeof LayoutBitcoinRoute
+  '/company': typeof LayoutCompanyRoute
+  '/diagram': typeof LayoutDiagramRoute
+  '/github': typeof LayoutGithubRoute
+  '/itemName': typeof LayoutItemNameRoute
   '/items': typeof LayoutItemsRoute
   '/settings': typeof LayoutSettingsRoute
+  '/tools': typeof LayoutToolsRoute
   '/': typeof LayoutIndexRoute
+  '/Bitcoin/$bitcoinId': typeof LayoutBitcoinBitcoinIdRoute
+  '/Bitcoin/staking': typeof LayoutBitcoinStakingRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/recover-password': typeof RecoverPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/play': typeof Another_rootPlayRoute
+  '/stop': typeof Another_rootStopRoute
   '/admin': typeof LayoutAdminRoute
+  '/bitcoin': typeof LayoutBitcoinRoute
+  '/company': typeof LayoutCompanyRoute
+  '/diagram': typeof LayoutDiagramRoute
+  '/github': typeof LayoutGithubRoute
+  '/itemName': typeof LayoutItemNameRoute
   '/items': typeof LayoutItemsRoute
   '/settings': typeof LayoutSettingsRoute
+  '/tools': typeof LayoutToolsRoute
   '/': typeof LayoutIndexRoute
+  '/Bitcoin/$bitcoinId': typeof LayoutBitcoinBitcoinIdRoute
+  '/Bitcoin/staking': typeof LayoutBitcoinStakingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_another_root': typeof Another_rootRouteWithChildren
   '/_layout': typeof LayoutRouteWithChildren
   '/login': typeof LoginRoute
   '/recover-password': typeof RecoverPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/signup': typeof SignupRoute
+  '/_another_root/play': typeof Another_rootPlayRoute
+  '/_another_root/stop': typeof Another_rootStopRoute
   '/_layout/admin': typeof LayoutAdminRoute
+  '/_layout/bitcoin': typeof LayoutBitcoinRoute
+  '/_layout/company': typeof LayoutCompanyRoute
+  '/_layout/diagram': typeof LayoutDiagramRoute
+  '/_layout/github': typeof LayoutGithubRoute
+  '/_layout/itemName': typeof LayoutItemNameRoute
   '/_layout/items': typeof LayoutItemsRoute
   '/_layout/settings': typeof LayoutSettingsRoute
+  '/_layout/tools': typeof LayoutToolsRoute
   '/_layout/': typeof LayoutIndexRoute
+  '/_layout/Bitcoin/$bitcoinId': typeof LayoutBitcoinBitcoinIdRoute
+  '/_layout/Bitcoin/staking': typeof LayoutBitcoinStakingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -103,34 +199,66 @@ export interface FileRouteTypes {
     | '/recover-password'
     | '/reset-password'
     | '/signup'
+    | '/play'
+    | '/stop'
     | '/admin'
+    | '/bitcoin'
+    | '/company'
+    | '/diagram'
+    | '/github'
+    | '/itemName'
     | '/items'
     | '/settings'
+    | '/tools'
     | '/'
+    | '/Bitcoin/$bitcoinId'
+    | '/Bitcoin/staking'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
     | '/recover-password'
     | '/reset-password'
     | '/signup'
+    | '/play'
+    | '/stop'
     | '/admin'
+    | '/bitcoin'
+    | '/company'
+    | '/diagram'
+    | '/github'
+    | '/itemName'
     | '/items'
     | '/settings'
+    | '/tools'
     | '/'
+    | '/Bitcoin/$bitcoinId'
+    | '/Bitcoin/staking'
   id:
     | '__root__'
+    | '/_another_root'
     | '/_layout'
     | '/login'
     | '/recover-password'
     | '/reset-password'
     | '/signup'
+    | '/_another_root/play'
+    | '/_another_root/stop'
     | '/_layout/admin'
+    | '/_layout/bitcoin'
+    | '/_layout/company'
+    | '/_layout/diagram'
+    | '/_layout/github'
+    | '/_layout/itemName'
     | '/_layout/items'
     | '/_layout/settings'
+    | '/_layout/tools'
     | '/_layout/'
+    | '/_layout/Bitcoin/$bitcoinId'
+    | '/_layout/Bitcoin/staking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  Another_rootRoute: typeof Another_rootRouteWithChildren
   LayoutRoute: typeof LayoutRouteWithChildren
   LoginRoute: typeof LoginRoute
   RecoverPasswordRoute: typeof RecoverPasswordRoute
@@ -175,11 +303,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_another_root': {
+      id: '/_another_root'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof Another_rootRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_layout/': {
       id: '/_layout/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof LayoutIndexRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/tools': {
+      id: '/_layout/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof LayoutToolsRouteImport
       parentRoute: typeof LayoutRoute
     }
     '/_layout/settings': {
@@ -196,6 +338,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutItemsRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/itemName': {
+      id: '/_layout/itemName'
+      path: '/itemName'
+      fullPath: '/itemName'
+      preLoaderRoute: typeof LayoutItemNameRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/github': {
+      id: '/_layout/github'
+      path: '/github'
+      fullPath: '/github'
+      preLoaderRoute: typeof LayoutGithubRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/diagram': {
+      id: '/_layout/diagram'
+      path: '/diagram'
+      fullPath: '/diagram'
+      preLoaderRoute: typeof LayoutDiagramRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/company': {
+      id: '/_layout/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof LayoutCompanyRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/bitcoin': {
+      id: '/_layout/bitcoin'
+      path: '/bitcoin'
+      fullPath: '/bitcoin'
+      preLoaderRoute: typeof LayoutBitcoinRouteImport
+      parentRoute: typeof LayoutRoute
+    }
     '/_layout/admin': {
       id: '/_layout/admin'
       path: '/admin'
@@ -203,27 +380,86 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAdminRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_another_root/stop': {
+      id: '/_another_root/stop'
+      path: '/stop'
+      fullPath: '/stop'
+      preLoaderRoute: typeof Another_rootStopRouteImport
+      parentRoute: typeof Another_rootRoute
+    }
+    '/_another_root/play': {
+      id: '/_another_root/play'
+      path: '/play'
+      fullPath: '/play'
+      preLoaderRoute: typeof Another_rootPlayRouteImport
+      parentRoute: typeof Another_rootRoute
+    }
+    '/_layout/Bitcoin/staking': {
+      id: '/_layout/Bitcoin/staking'
+      path: '/Bitcoin/staking'
+      fullPath: '/Bitcoin/staking'
+      preLoaderRoute: typeof LayoutBitcoinStakingRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/Bitcoin/$bitcoinId': {
+      id: '/_layout/Bitcoin/$bitcoinId'
+      path: '/Bitcoin/$bitcoinId'
+      fullPath: '/Bitcoin/$bitcoinId'
+      preLoaderRoute: typeof LayoutBitcoinBitcoinIdRouteImport
+      parentRoute: typeof LayoutRoute
+    }
   }
 }
 
+interface Another_rootRouteChildren {
+  Another_rootPlayRoute: typeof Another_rootPlayRoute
+  Another_rootStopRoute: typeof Another_rootStopRoute
+}
+
+const Another_rootRouteChildren: Another_rootRouteChildren = {
+  Another_rootPlayRoute: Another_rootPlayRoute,
+  Another_rootStopRoute: Another_rootStopRoute,
+}
+
+const Another_rootRouteWithChildren = Another_rootRoute._addFileChildren(
+  Another_rootRouteChildren,
+)
+
 interface LayoutRouteChildren {
   LayoutAdminRoute: typeof LayoutAdminRoute
+  LayoutBitcoinRoute: typeof LayoutBitcoinRoute
+  LayoutCompanyRoute: typeof LayoutCompanyRoute
+  LayoutDiagramRoute: typeof LayoutDiagramRoute
+  LayoutGithubRoute: typeof LayoutGithubRoute
+  LayoutItemNameRoute: typeof LayoutItemNameRoute
   LayoutItemsRoute: typeof LayoutItemsRoute
   LayoutSettingsRoute: typeof LayoutSettingsRoute
+  LayoutToolsRoute: typeof LayoutToolsRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
+  LayoutBitcoinBitcoinIdRoute: typeof LayoutBitcoinBitcoinIdRoute
+  LayoutBitcoinStakingRoute: typeof LayoutBitcoinStakingRoute
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAdminRoute: LayoutAdminRoute,
+  LayoutBitcoinRoute: LayoutBitcoinRoute,
+  LayoutCompanyRoute: LayoutCompanyRoute,
+  LayoutDiagramRoute: LayoutDiagramRoute,
+  LayoutGithubRoute: LayoutGithubRoute,
+  LayoutItemNameRoute: LayoutItemNameRoute,
   LayoutItemsRoute: LayoutItemsRoute,
   LayoutSettingsRoute: LayoutSettingsRoute,
+  LayoutToolsRoute: LayoutToolsRoute,
   LayoutIndexRoute: LayoutIndexRoute,
+  LayoutBitcoinBitcoinIdRoute: LayoutBitcoinBitcoinIdRoute,
+  LayoutBitcoinStakingRoute: LayoutBitcoinStakingRoute,
 }
 
 const LayoutRouteWithChildren =
   LayoutRoute._addFileChildren(LayoutRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  Another_rootRoute: Another_rootRouteWithChildren,
   LayoutRoute: LayoutRouteWithChildren,
   LoginRoute: LoginRoute,
   RecoverPasswordRoute: RecoverPasswordRoute,
