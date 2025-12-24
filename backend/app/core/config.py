@@ -115,5 +115,6 @@ class Settings(BaseSettings):
 
         return self
 
+# type: ignore
 
-settings = Settings()  # type: ignore
+settings = Settings()  

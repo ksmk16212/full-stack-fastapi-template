@@ -131,7 +131,7 @@ const AddItem = () => {
                 </Button>
               </DialogClose>
               <LoadingButton type="submit" loading={mutation.isPending}>
-                send
+                secondaryBtn
               </LoadingButton>
             </DialogFooter>
           </form>
